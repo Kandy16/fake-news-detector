@@ -68,7 +68,7 @@ Department f\"{u}r Informatik,
 \begin{abstract}
 \frenchspacing
 \noindent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla ligula, blandit quis mi ut, pellentesque mattis nisi. Praesent elementum diam sed nibh lobortis dictum. Sed eleifend posuere magna, ac rhoncus nisi feugiat in. Donec accumsan ac leo in cursus. Vestibulum id elit lacus. Ut nec rhoncus dolor, quis laoreet dui. Donec luctus fringilla elit. Sed suscipit dolor dolor, sed consequat neque ornare non. Nunc laoreet, metus ac congue efficitur, neque felis varius metus, in pretium dui nibh eget nisi. Integer maximus porta turpis, et dignissim dolor tempus ac. In hac habitasse platea dictumst. Vivamus pretium dui massa, in volutpat orci semper in. Aliquam lorem elit, gravida pretium aliquet id, laoreet eget sem. Mauris mauris lacus, vehicula at felis sit amet, rutrum efficitur est. Pellentesque auctor vestibulum risus sit amet consectetur. Nunc lobortis velit sed nunc aliquam, non egestas nisl vulputate. Nam posuere mauris lectus, nec ullamcorper ipsum placerat eget. Duis quis justo sit amet nunc facilisis ullamcorper.
+With the unprecedented growth of production and dissemination of information, there exists an unprecedented growth in production and dissemination of fake news. There have been several adverse incidents that happened in the past due to rise of fake news. It is very essential to have a mechanism to detect and control fake news automatically. Several methods have been proposed which are automatic and semi automatic than the traditional systems. In this master thesis project, an attempt is to be made to understand online encyclopedias using deep learning technique. The performance of the system will be benchmarked against the results that have been published for those systems.
 \end{abstract}
 % -----------------------------------------------------------------------------
 \section{Introduction}
@@ -139,19 +139,36 @@ Jing Ma et al. efforts were focused on building a recurrent neural network (RNN)
 % ----------------------------------------------------------------------------
 \section{Approach}
 
-Deep learning - using RNN network architecture for sequential models
-One hot representation or word vector
+Deep learning systems are giving better results in building intellectual systems nowadays. The results achieved in applications such as Autonomous car driving, playing chess are almost equivalent to the skillsets of a human. There are different neural network models exists such as Feed Forward, Convolutional, Recurrent Neural Network models. Wikipedia contains a lot of articles and each articles contains text. Text is a sequence data where as position of words in it is dependent on the other. Recurrent Neural Networks bring out best results in many applications involving text data such as machine translation, super tagging.
+
+Every article or sentence in wikipedia can be fetched and inputted to the neural network as truthy value. But we lack false values. We need to use a semi supervised technique where in extraction of falsy values need to be carried out automatically. This is one of the challenges of this master thesis. 
+
+Some of the ideas in place are
+1) Extract the articles and sentences from many of these fact checkers websites and use the ones which are labelled as false values. We need to make sure that they are opposites of sentences in wikipedia.
+2) Build sentences which are opposite of sentences in wikipedia by using GLOVE technique or construct negative sentences. 
+3) Build sentences which are opposite of sentences in wikipedia by looking a semantic web representations. Word embeddings can be used to replace the verb opposites 
+
+The size of the article in wikipedia are long and arbitrary and RNN will face gradient diminishing problems. The long distance dependencies will be missed out and hence different configurations of the neural network should be used and compared 
+1) Different layers
+2) Single/Multiple LSTM or GRU units
+3) Usage of one hot vector vs word embeddings. The creation of word embeddings need to be thought through. It would be a good idea to do it from either wikipedia itself or from pre-trained word embeddiings
+
+
+Recently convulational neural network which character level input is giving out better results for some applications and this configuraiton should also be tried out.
+
+%Deep learning - using RNN network architecture for sequential models
+%One hot representation or word vector
 %https://www.mendeley.com/viewer/?fileId=3eea8d80-58e9-51f5-5b45-945420ba7577&documentId=a45b2cdb-dae1-3d54-8d47-395580293df7
 
-Usage of LSTM - to support long range dependencies
-Wordvectors? 
-Language modeling? - Based on the probability of occurrence - we can predict how likely the sentence can occur or predict the next word. Given a news - predict how likely it can happen. But this may  not give a good result - so, can be used as a baseline
+%Usage of LSTM - to support long range dependencies
+%Wordvectors? 
+%Language modeling? - Based on the probability of occurrence - we can predict how likely the sentence can occur or predict the next word. Given a news - predict how likely it can happen. But this may  not give a good result - so, can be used as a baseline
 
-Some research questions are
+%Some research questions are
 
-What would be the best word vector representation for this problem - how do we prepare it? - have to generalize it
-How do we create negative examples? What is the best way to do it for this kind of problem?
-What lies can be detected effectively? This will explain what level of information is updated in wikipedia in each domain - constructing the dataset would be tricky. Can look at ways how to construct datasets based on the domain
+%What would be the best word vector representation for this problem - how do we prepare it? - have to generalize it
+%How do we create negative examples? What is the best way to do it for this kind of problem?
+%What lies can be detected effectively? This will explain what level of information is updated in wikipedia in each domain - constructing the dataset would be tricky. Can look at ways how to construct datasets based on the domain
 
 
 % ----------------------------------------------------------------------------
