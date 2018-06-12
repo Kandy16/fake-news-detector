@@ -68,24 +68,26 @@ Department f\"{u}r Informatik,
 \begin{abstract}
 \frenchspacing
 \noindent
-With the unprecedented growth of production and dissemination of information, there exists an unprecedented growth in production and dissemination of fake news. There have been several adverse incidents that happened in the past due to rise of fake news. It is very essential to have a mechanism to detect and control fake news automatically. Several methods have been proposed which are automatic and semi automatic than the traditional systems. In this master thesis project, an attempt is to be made to understand online encyclopedias using deep learning technique. The performance of the system will be benchmarked against the results that have been published for those systems.
+With the unprecedented growth of production and dissemination of information, there exists an unprecedented growth in production and dissemination of fake news. There have been several adverse incidents that happened in the past due to rise of fake news. It is very essential to have a mechanism to detect and control fake news automatically. Several methods have been proposed which are automatic and semi automatic than the traditional manual checking systems. In this master thesis project, an attempt is to be made to understand online encyclopedias using deep learning technique. The performance of the system will be benchmarked against the results that have been published for those systems.
 \end{abstract}
 % -----------------------------------------------------------------------------
 \section{Introduction}
 \frenchspacing
 
 %News/Information - how important it is to the society, how society advances
-%Fake news - Fake news in web -  its prevalence and the disadvantages, consequences of it
-%Compare against reliable source of information - that is the way to detect it, experts from each domain give their views and a consolidated decision
+%Fake news - definition(Citation?)
+% Fake news in web -  its prevalence and the disadvantages (Citation - science magazine paper). Disadvantage example from the paper?
 
-%Manual correction is not possible. Web has seen an unprecedented growth. It is important to have automated means.
-%Wikipedia - say 1 or 2 sentences about it being a source of information - different subject matters - wide coverage. Frequency of updates
-%About the reliability of source of information in wikipedia
+%Fake news detection template - Compare against reliable source of information - that is the way to detect it, experts from each domain give their views and a consolidated decision (Citation?) Systems such as factcheck, snopes etc How they do it as against the rate at which fake news is generated?
 
-%Wikipedia is peer reviewed as against the newspaper
+%Manual correction is not possible. Web has seen an unprecedented growth. It is important to have automated means. (Citation?)
+
+%Wikipedia - say 1 or 2 sentences about it being a source of information - different subject matters - wide coverage. Frequency of updates (Citation?)
+%About the reliability of source of information in wikipedia (Citation?) - Wikipedia is peer reviewed as against the newspaper
+
+%Deeplearning - what is it? Advantages and how is it performing against others? How NLP problems are handled using RNN? What applications?
 
 %Fake news detection using wikipedia as a ground reality
-%What class of fake news it can solve ?? - may be at the beginning specify different classes of fake news
 
 Humans evolved and became a superior race than other species only by being able to pass the information to its descendants. The society advances as a whole by improving its collective intelligence and that happens only by sharing. With the advent of technology systems such as web, it is possible for anyone to become a publisher and publish their thoughts, ideas to the entire world. As much as it became easier to disseminate information it also brought in a lot of negative effects. One of it is the spread of false news or fake news. The dissemination of false news can harm the society very bad and it can reduce the progress or worsen the state of the society. There are several examples such as a misleading news refering to a fire in a US school made a lot of chaos in traffic and accidents because parents were rushing to save their kids. Humans have been relying on their collective intelligence and advice from experts on a particular domain to handle the fake news. There are several organizations such as snopes, factcheck.org, politfact which tags many information with a fact meter to label the authenticity of information. Although this is fairly good, it is not scalable and unmatchable to the rate at which the information is created. With many social networks, blogging sites we have seen a unparallel rise in the volume of content being generated and a manual intervention to cross check their authenticity is clearly no match. But overall the main idea to handle false news is to check against reliable source of information and claim its integrity.
 
@@ -99,26 +101,26 @@ There are many attempts being made to counter attack fake news. Most of them are
 
 Giovanni Luca Ciampaglia et al. used DBPedia for checking computationally whether a given information is factual or not. The work involves using the knowledge graph built from DBPedia which represents infobox section in Wikipedia. This represents only non-controversial and factual information which is analagous to human collected information. The methodology formulates the problem of checking facts into a network analysis problem which is finding the shortest path between nodes (subject and object of a sentence) in a graph. The aggregated generalities of nodes along a path in a weighted undirected graph is used as a metric for measuring the authenticity of information. The more the elements are generic the weaker the truthfulness is.  The genericness of a node is obtained by the degree of that node - no. of nodes connected to that node. The truthfulness of the information is improved if there exists at least one path from subject to an object with minimal non-generic nodes. This approach exploits the indirect connections to a great extent with distance constraints in a knowledge graph. The approach gave promising results when tested with datasets containing simple factual information about history, geography, entertainment and biography. 
 
-limitations
------------
-1)primitive - the complexity of news dealt with is very primitive. Current fake news are very complex and subtle when it comes to the ambiquities
-2) Semantic proximity methodology is simple and primitive
+%limitations
+%-----------
+%1)primitive - the complexity of news dealt with is very primitive. Current fake news are very complex and subtle when it comes to the ambiquities
+%2) Semantic proximity methodology is simple and primitive
 
 
-But it is a good initial step towards an automated fact checker system.
+%But it is a good initial step towards an automated fact checker system.
 
 
-What improvements are we going to bring?
-----------------------------------------
-1) Ours would also be primitive :-) May be slightly better :-)
-2) Frequency of conversion of wikipedia content into DBPedia is lesser ??
-3) DBPedia does not cover the whole of wikipedia ???? 
+%What improvements are we going to bring?
+%----------------------------------------
+%1) Ours would also be primitive :-) May be slightly better :-)
+%2) Frequency of conversion of wikipedia content into DBPedia is lesser ??
+%3) DBPedia does not cover the whole of wikipedia ???? 
 
-Things to do:
--------------
-1) Find the answers for above questions
-2) Get the dataset that we can use?
-3) Try to look for a demo of this system
+%Things to do:
+%-------------
+%1) Find the answers for above questions
+%2) Get the dataset that we can use?
+%3) Try to look for a demo of this system
 
 Jing Ma et al. efforts were focused on building a recurrent neural network (RNN) to detect rumors from Microblogs effectively. The social context information of a post and all its relevant posts such as comments or retweets is modeled as variable-length time series.  RNNs with different configurations such as using one or two layers of GRU and LSTM are very good in capturing long distance dependencies of temporal and textual representations of posts under supervision. This method completely avoids all the handcrafted feature engineering efforts which are biased and time consuming. It produces better results with datasets from Twitter and Sina Weibo than all of the traditional Machine Learning methods. RNNs with two layers of GRU gave the best results and it was also very quick in predicting the rumor than the average time from debunking services.  
 
@@ -154,7 +156,7 @@ The size of the article in wikipedia are long and arbitrary and RNN will face gr
 3) Usage of one hot vector vs word embeddings. The creation of word embeddings need to be thought through. It would be a good idea to do it from either wikipedia itself or from pre-trained word embeddiings
 
 
-Recently convulational neural network which character level input is giving out better results for some applications and this configuraiton should also be tried out.
+Recently convolutional neural network which character level input is giving out better results for some applications and this configuraiton should also be tried out.
 
 %Deep learning - using RNN network architecture for sequential models
 %One hot representation or word vector
