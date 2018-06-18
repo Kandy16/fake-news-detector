@@ -22,8 +22,8 @@
 \newcommand{\matriculationID}{216100855}
 
 \newcommand{\Title}{Fake News Detection using Neural Network models of Wikipedia}
-\newcommand{\StartDate}{01.07.2018}
-\newcommand{\EndDate}{31.12.2018}
+\newcommand{\StartDate}{01-July-2018}
+\newcommand{\EndDate}{31-Dec-2018}
 \newcommand{\subject}{Institute for Web Science and Technologies}
 \newcommand{\expert}{Prof. Dr. Steffen Staab}%inkl. Titel
 \newcommand{\supervisor}{Supervisor????} %inkl. Titel
@@ -98,10 +98,15 @@ The focus of the master thesis is to use wikipedia as a ground reality or as sou
 % Platform based methods - manual/semi automated /automated feature engineering efforts
 % Checking the authenticity semantically - using RDF, wikipedia
 
+Many researches have been conducted to detect Fake news in microblogging platforms such as Twitter. Most of these works classify the news as Truth or Fake by using the platform/user specific information such as how popular the post is, credibility of the user who shared it, diffusion patterns etc \cite{Liu2015} \cite{Ma2015}. Zhao, et al. have used cue terms such as 'not true', 'unconfirmed' etc in retweets or the comments to detect fake news. The assumption is that when people exposed to fake news they will comment or retweet with such words in their post\cite{Zhao2015}. Other studies focused on using the temporal characteristics of fake news during the spread. Kwon et al. used tweet volume in time series and Ma, et al. measured variations of social context features over time\cite{Kwon2013} \cite{Ma2015}. All the attempts made in the above researches involve handcrafted feature engineering which is critical, biased and very time consuming.
 
-There are many attempts being made to counter attack fake news. Most of them are imbibed into one particular platform and uses the news, user characteristics, who shared it and what is their credibility and how the diffusion have happened. They used many supervised machine learning algorithms which uses handcrafted features and obtain substantial results. 
+Jing Ma et al. efforts were focused on building a recurrent neural network (RNN) to detect rumors from Microblogs such as Twitter and Weibo effectively. The training dataset is obtained by using constructed fake and truthy news keywords from debunking services such as Snopes and Sina community management center. The keywords are used in Search API's of Microblog and labelled respectively. The social context information of a post and all its relevant posts such as comments or retweets is modeled as variable-length time series. RNNs with different configurations such as using one or two layers of GRU and LSTM are very good in capturing long distance dependencies of temporal and textual representations of posts under supervision. This method completely avoids all the handcrafted feature engineering efforts which are biased and time consuming. It produces better results with datasets from Twitter and Sina Weibo than all of the traditional Machine Learning methods. RNNs with two layers of GRU gave the best results and it was also very quick in predicting the rumor than the average time from debunking services\cite{Ma}.
 
-Giovanni Luca Ciampaglia et al. used DBPedia for checking computationally whether a given information is factual or not. The work involves using the knowledge graph built from DBPedia which represents infobox section in Wikipedia. This represents only non-controversial and factual information which is analagous to human collected information. The methodology formulates the problem of checking facts into a network analysis problem which is finding the shortest path between nodes (subject and object of a sentence) in a graph. The aggregated generalities of nodes along a path in a weighted undirected graph is used as a metric for measuring the authenticity of information. The more the elements are generic the weaker the truthfulness is.  The genericness of a node is obtained by the degree of that node - no. of nodes connected to that node. The truthfulness of the information is improved if there exists at least one path from subject to an object with minimal non-generic nodes. This approach exploits the indirect connections to a great extent with distance constraints in a knowledge graph. The approach gave promising results when tested with datasets containing simple factual information about history, geography, entertainment and biography. 
+The method uses platform specific features such as the content of tweets, retweets, comments in a tweet and the temporal correlation between them to figure out whether the news is truthy or fake. All the features specified will not be available in many platforms and this methodolgy will not suit in such conditions. RNNs give best results for sequence data like text and validating a news as true or false completely based on its semantic is good in such cases.
+
+Giovanni Luca Ciampaglia et al. used DBPedia for checking computationally whether a given information is factual or not. The work uses the knowledge graph built from DBPedia which represents infobox section in Wikipedia. This represents only non-controversial and factual information which is analagous to human collected information. The methodology formulates the problem of checking facts into a network analysis problem which is finding the shortest path between nodes (subject and object of a sentence) in a graph. The aggregated generalities of nodes along a path in a weighted undirected graph is used as a metric for measuring the authenticity of information. The more the elements are generic the weaker the truthfulness is.  The genericness of a node is obtained by the degree of that node - no. of nodes connected to that node. The truthfulness of the information is improved if there exists at least one path from subject to an object with minimal non-generic nodes. This approach exploits the indirect connections to a great extent with distance constraints in a knowledge graph. The approach gave promising results when tested with datasets containing simple factual information about history, geography, entertainment and biography\cite{Ciampaglia2015}. 
+
+The above research is a good initial step towards an automated fact checker system using only semantics of data. The problem of fake news attempted is very primitive and uses only 'is' or 'type of' relation. Current fake news are very complex and subtle when it comes to ambiquities. In this approach, DBPedia is used and according to their sources the update/synch frequency is slower than wikipedia by 6 to 18 months.
 
 %limitations
 %-----------
@@ -124,7 +129,7 @@ Giovanni Luca Ciampaglia et al. used DBPedia for checking computationally whethe
 %2) Get the dataset that we can use?
 %3) Try to look for a demo of this system
 
-Jing Ma et al. efforts were focused on building a recurrent neural network (RNN) to detect rumors from Microblogs effectively. The social context information of a post and all its relevant posts such as comments or retweets is modeled as variable-length time series.  RNNs with different configurations such as using one or two layers of GRU and LSTM are very good in capturing long distance dependencies of temporal and textual representations of posts under supervision. This method completely avoids all the handcrafted feature engineering efforts which are biased and time consuming. It produces better results with datasets from Twitter and Sina Weibo than all of the traditional Machine Learning methods. RNNs with two layers of GRU gave the best results and it was also very quick in predicting the rumor than the average time from debunking services.  
+  
 
 %Attempts made to figure out fake news in the past
 %Manually curated facts dataset
@@ -178,13 +183,23 @@ Recently convolutional neural network which character level input is giving out 
 % ----------------------------------------------------------------------------
 \section{Evaluation}
 
-The training, evaluation and test dataset needs to be curated
-Enough data should be present for each bin such as facts, slightly distorted lie, blatant lies 
+The training, evaluation and test dataset needs to be curated. 
 
-Extract sentence from wikipedia and give it as it is
-Distort the sentence by swapping and give it 
+More or less equal data should be present for each bin such as facts and lies.
 
-Construct good facts and lies outside - a proper labelled dataset and see how it works
+Extract sentence from wikipedia and give it as it is.
+
+Distort the sentence by swapping and give it.
+
+Construct good facts and lies outside - a proper labelled dataset and see how it works.
+
+Use the dataset provided by researches indicated in related work section.
+
+Look for already curated community wide popular datasets for fake news.
+
+Have a baseline.
+
+Compare each configuration against baseline and measure the accuracy, time taken. If the curated dataset has many groups of varying complexity then state the results groupwise
 \newpage
 
 % ----------------------------------------------------------------------------
@@ -204,34 +219,34 @@ Secondary supervisor: \> \secondSupervisor{}\\
 
 \section{Time schedule}
 
-This needs to be changed. But for now just a filler.
-
 \begin{itemize}
-	\item Introduction and Literature: 03.05.17 – 15.06.17
-	\item Methodology: 09.06.17 – 30.07.17
+	\item Introduction and Literature: 01-May-2018 – 30-June-2018
+	\item Initial Phase: 01-July-2018 – 15-Sep-2018
 	\begin{itemize}
-		\item Approach concept: 09.06.17 – 22.06.17
-		\item Implementation Plan: 18.06.17 – 29.06.17
-        \item Implementation: 29.06.17 – 30.07.17
-        \item Testing and refining: 01.07.17 – 30.07.17
+		\item Prototyping: 01-July-2018 – 30-July-2018
+		\item Implementing ML Pipeline: 01-Aug-2018 – 15-Aug-2018
+        \item Baseline Implementation: 16-Aug-2018 – 30-Aug-2018
+        \item Testing and refining: 01-Sep-2018 – 15-Sep-2018
 	\end{itemize}
-	\item Approach results: 31.07.17 – 20.08.17
+	\item Development Phase: 16-Sep-2018 – 30-Nov-2018
 	\begin{itemize}
-		\item Sampling: 31.07.17 – 12.08.17
-		\item Interpretation: 13.08.17 – 20.08.17
+		\item Prototyping: 01-July-2018 – 30-July-2018
+		\item Implementing ML Pipeline: 01-Aug-2018 – 15-Aug-2018
+        \item Baseline Implementation: 16-Aug-2018 – 30-Aug-2018
+        \item Testing and refining: 01-Sep-2018 – 15-Sep-2018
 	\end{itemize}
-	\item Evaluation: 21.08.17 – 25.09.17
+	\item Final Phase: 01-Dec-2018 – 30-Dec-2018
 	\begin{itemize}
-		\item Preparing evaluation: 21.08.17 – 01.09.17
-		\item Conducting evaluation: 02.09.17 – 11.09.17
-		\item Analyzing results: 12.09.17 – 25.09.17
+	 	\item Comprehend Benchamark results: 01-Dec-2018 – 15-Dec-2018
+		\item Revision: 08-Dec-2018 – 22-Dec-2018
+		\item Thesis report: 01-Dec-2018 – 30-Dec-2018
 	\end{itemize}
-	\item Revision: 26.09.17 – 31.10.17
 \end{itemize}
 
 
 % ----------------------------------------------------------------------------
 \bibliographystyle{alpha}
+\newpage
 \bibliography{bib}
 \newpage
 % ----------------------------------------------------------------------------
