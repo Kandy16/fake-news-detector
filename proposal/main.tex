@@ -27,13 +27,8 @@
 \newcommand{\subject}{Institute for Web Science and Technologies}
 \newcommand{\expert}{Prof. Dr. Steffen Staab}%inkl. Titel
 \newcommand{\supervisor}{Supervisor????} %inkl. Titel
-\newcommand{\scndSupervisor}{Lukas Schmelzeisen} %inkl. Titel
+\newcommand{\secondSupervisor}{Lukas Schmelzeisen} %inkl. Titel
 \newcommand{\type}{Master Thesis}
-
-\newcommand{\enhanced}{Enhanced Stitched-Viewport Screenshot}
-\newcommand{\stitched}{Stitched-Viewport Screenshot}
-\newcommand{\expanded}{Expanded-Viewport Screenshot}
-
 
 \begin{document}
 % ---------------------------------------------
@@ -50,7 +45,7 @@ Department f\"{u}r Informatik,
 
 \supervisor{}
 
-\scndSupervisor{}
+\secondSupervisor{}
 
 \begin{center}
 	\large{\bf \type{}  \myName{}}
@@ -68,34 +63,41 @@ Department f\"{u}r Informatik,
 \begin{abstract}
 \frenchspacing
 \noindent
-With the unprecedented growth of production and dissemination of information, there exists an unprecedented growth in production and dissemination of fake news. There have been several adverse incidents that happened in the past due to rise of fake news. It is very essential to have a mechanism to detect and control fake news automatically. Several methods have been proposed which are automatic and semi automatic than the traditional manual checking systems. In this master thesis project, an attempt is to be made to understand online encyclopedias using deep learning technique. The performance of the system will be benchmarked against the results that have been published for those systems.
+The unprecedented growth of production and dissemination of information leads to an unprecedented growth of production and dissemination of Fake news. Fake news hinders the society from progressing by delaying the pursuit of right information. It is very essential to have a mechanism to detect and control fake news. Several organizations uses collaborative efforts of domain experts, a manual process which cannot withstand the proliferation of news production and dissemination. This research work will use Wikipedia as a ground reality and cross check claims automatically. Deep Neural Networks will be used to understand Wikipedia and the performance of different configurations of Neural Networks will be benchmarked against each other and the already available automated fake news detectors.
 \end{abstract}
 % -----------------------------------------------------------------------------
 \section{Introduction}
 \frenchspacing
 
 %News/Information - how important it is to the society, how society advances
+Humans evolved into a superior race only because of transfering the knowledge to its descendants. 'Knowledge is Power', whether it is about events or about the working of anything, knowing has always put anyone into a better position than being ignorant. Only by sharing information the society improves its collective intelligence. With the rise in web and social networks, the production and dissemination of information happens at a rapid pace. As much as it became easier to disseminate information it has also become easier to spread fake news.
+
 %Fake news - definition(Citation?)
+According to Lazer et al., Fake news resembles very similar to a news media information in form but not in organizational process or intent. Fake news overlaps with misinformation (misleading information shared unintentionally) and disinformation (false information spread purposefully). In essence the fake news publishers does not have the rigorous news media's editorial norms for making sure of accuracy and credibility \cite{Lazer1094}. 
+
 % Fake news in web -  its prevalence and the disadvantages (Citation - science magazine paper). Disadvantage example from the paper?
+Fake news is quite prevalent and studies refer that an average American exposed to atleast a mimimum of 3 fake news stories per month from well known publishers during 2016 election. Social Networking platforms such as for e.g. Twitter and Facebook have been used heavily by Fake news publishers during 2016 US and 2017 French elections \cite{Lazer1094}.A large scale empirical study with twitter dataset by Vosoughi et al. reveals that fake news spread farther, faster, deeper and broader than the legitimate news. The effects of fake news are more prominent in political context than news about terrorism, natural disaster, science and other domains. Novelty is the most important factor for information to spread. People share information which are interesting and new information are considered as interesting. Fake news are received as much more novel than the True news. As against the understanding, it is the humans, not robots, who are more likely responsible for spread of fake news \cite{Vosoughi1146}.
 
-%Fake news detection template - Compare against reliable source of information - that is the way to detect it, experts from each domain give their views and a consolidated decision (Citation?) Systems such as factcheck, snopes etc How they do it as against the rate at which fake news is generated?
-
-%Manual correction is not possible. Web has seen an unprecedented growth. It is important to have automated means. (Citation?)
+%Fake news detection template - Compare against reliable source of information - that is the way to detect it, experts from each domain give their views and a consolidated decision (Citation?) Systems such as factcheck, snopes etc How they do it as against the rate at which fake news is generated?. %Manual correction is not possible. Web has seen an unprecedented growth. It is important to have automated means. (Citation?)
+Most often Fake news is detected by people and organizations through their common sense. There are many fact checking websites such as for e.g. snopes.com, factcheck.org, politfact which uses collaborative effort of domain experts and tag news with a fact meter to refer the authenticity. Although this is fairly good, since it requires manual effort, it is not available for all domains and not scalable. At the same time, it is unmatchable to the rate at which the information is produced. With many social networks, blogging sites we have seen a unparallel rise in the volume of content being generated and a manual intervention to cross check their authenticity is clearly no match. But overall the main idea to handle false news is to check against reliable source of information and claim its integrity.
 
 %Wikipedia - say 1 or 2 sentences about it being a source of information - different subject matters - wide coverage. Frequency of updates (Citation?)
 %About the reliability of source of information in wikipedia (Citation?) - Wikipedia is peer reviewed as against the newspaper
-
+ Wikipedia is a free online encylopedia available in more than 300 languages with a principle that anyone can edit. It has got a wide range of domains covered with many articles written under each domain \cite{Wales2005}. According to Alexa and SimilarWeb, Wikipedia is considered to be fifth most popular website.According to Wikipedia, the English Wikipedia consists highest number of articles at present amounting to approximately 500 million. The range of subject covered is wide such as for e.g. Art, Culture, Science, Mathematics, Religion etc. and it is maintained by many authors. The frequency of the udpate in English Wikipedia is very high and it is approximately equal to 10 updates per second and 600 articles per day. Although it can be edited by anyone, investigation carried out by Nature, reveals that the quality of content is similar to other encyclopedia such as Britannica \cite{Wales2005}. Although there can be malicious users in Wikipedia, the culture and the community ensures most of the high impactful errors are rectified very quickly\cite{Priedhorsky2007}. Thus English Wikipedia is a reliable source of information.
+ 
 %Deeplearning - what is it? Advantages and how is it performing against others? How NLP problems are handled using RNN? What applications?
+Understanding Wikipedia is a complex task and it requires understanding the subtelities of English natural language and the context. Machine Learnining is the capability of systems learning patterns from raw data. Different features of raw data need to be extracted separately and fed to Machine learning algorithms to get good performance. This drawbeck is solved by using Deep Learning, which uses neural networks, a multi layer network of simple representations to learn complex data representations and then extracts patterns out of the data. Deep Learning provides state-of-the-art results in the field such as image recognition, speech recognition and natural language processing\cite{Goodfellow2016}.
 
-%Fake news detection using wikipedia as a ground reality
-
-Humans evolved and became a superior race than other species only by being able to pass the information to its descendants. The society advances as a whole by improving its collective intelligence and that happens only by sharing. With the advent of technology systems such as web, it is possible for anyone to become a publisher and publish their thoughts, ideas to the entire world. As much as it became easier to disseminate information it also brought in a lot of negative effects. One of it is the spread of false news or fake news. The dissemination of false news can harm the society very bad and it can reduce the progress or worsen the state of the society. There are several examples such as a misleading news refering to a fire in a US school made a lot of chaos in traffic and accidents because parents were rushing to save their kids. Humans have been relying on their collective intelligence and advice from experts on a particular domain to handle the fake news. There are several organizations such as snopes, factcheck.org, politfact which tags many information with a fact meter to label the authenticity of information. Although this is fairly good, it is not scalable and unmatchable to the rate at which the information is created. With many social networks, blogging sites we have seen a unparallel rise in the volume of content being generated and a manual intervention to cross check their authenticity is clearly no match. But overall the main idea to handle false news is to check against reliable source of information and claim its integrity.
-
-Wikipedia is a crowdsourced online encylopedia which has versatile topics and a whole range of articles for each topic. It has been listed as one of the famous 10 websites or the one of the 10 most used website. The range of subject covered is very wide and it comes in different languages. The frequency of the udpate is really high and every content is peer reviewed by other as against the process in newspaper. Although the checking need not be done by experts opinion the reliability of common public on wikipeida is highly visible. 
-
-The focus of the master thesis is to use wikipedia a ground reality or as source of experts opinion and use this knowledge to cross check the claims which in the form of tweets, blogs, sentences through automated means. Recurrent Neural Network are a special kind of neural network models for sequence data. They are used to understand wikipedia and acts a bot to check the news as fake or not. In this we assume whatever information present in wikipedia is truthy and we rely on the collective and collaborative effort of humans to build this enormous information resource.
+%Fake news detection using wikipedia as a ground reality (Attempt in Master thesis)
+The focus of the master thesis is to use wikipedia as a ground reality or as source of experts opinion and use this knowledge to cross check claims automatically. Whether the information is present in Wikipedia or not will be used as a proxy for information being considered as Truthy or Fake. Neural Networks with different configuration will be used to understand Wikipedia and the performance of each one will be benchmarked against each other. 
 % ----------------------------------------------------------------------------
 \section{Related work}
+
+% FIND PAPERS FOR FOLLOWING
+% Manual method for fake news - people checking sources manually in politfact, factcheck etc
+% Platform based methods - manual/semi automated /automated feature engineering efforts
+% Checking the authenticity semantically - using RDF, wikipedia
+
 
 There are many attempts being made to counter attack fake news. Most of them are imbibed into one particular platform and uses the news, user characteristics, who shared it and what is their credibility and how the diffusion have happened. They used many supervised machine learning algorithms which uses handcrafted features and obtain substantial results. 
 
@@ -195,7 +197,7 @@ Duration of work: \hspace{1.1cm} \= \StartDate{} -- \EndDate{}\\
 \vspace{0.5ex}Student number: \> \matriculationID{}\\
 \vspace{0.5ex}Primary supervisor: \> \expert{}\\
 Supervisor: \> \supervisor{}\\
-Secondary supervisor: \> \scndSupervisor{}\\
+Secondary supervisor: \> \secondSupervisor{}\\
 \end{tabbing}
 
 % ----------------------------------------------------------------------------
@@ -241,7 +243,7 @@ This needs to be changed. But for now just a filler.
   \myName{} &  & \expert{}  \\ \vspace{3cm}
    &  &   \\
   --------------------------------------------------- &  & ---------------------------------------------------\\
-  \supervisor{} &  & \scndSupervisor{}  \\ \vspace{3cm}
+  \supervisor{} &  & \secondSupervisor{}  \\ \vspace{3cm}
    &  &   \\
 \end{tabular}
 
