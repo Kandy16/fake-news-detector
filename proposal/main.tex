@@ -7,11 +7,15 @@
 \usepackage{ifthen}
 \usepackage{bibgerm}
 \usepackage{graphicx}
+\graphicspath{{./images/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png,.svg}
+\usepackage{hyperref}
+\usepackage{movie15}
+
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage{blindtext}
 \usepackage{color}
-
 \topmargin 0cm \textheight 23cm \parindent0cm
 
 % ---------------------------------------------
@@ -151,11 +155,8 @@ Giovanni Luca Ciampaglia et al. used DBPedia for checking computationally whethe
 The above research is a good initial step towards an automated fact checker system using only semantics of data. The problem of fake news attempted is very primitive and uses only 'is' or 'type of' relation. Current fake news are very complex and subtle when it comes to ambiquities. In this approach, DBPedia is used and according to their sources the update/synch frequency is slower than wikipedia by 6 to 18 months.
 
 \color{red}
-\section{Background Study}
 Overall a couple of more research references need to be added. They could be completely different or similar. If similar then refer in the same paragraphs and state what is different and how is it done
 \color{black}
-
-\section{Approach}
 
 %limitations
 %-----------
@@ -195,11 +196,57 @@ Overall a couple of more research references need to be added. They could be com
 %https://www.mendeley.com/viewer/?fileId=6e662e87-8846-c9c3-5a3b-505f835bd89b&documentId=f238c7a0-21a1-3cab-9ed4-1c864aa0011c
 
 % ----------------------------------------------------------------------------
-\color{red}
 \section{Background Study}
+\color{red}
+
 This section should talk about RNN , LSTM and different configurations. 
 Images can be used. Illustrations should be referred by SVG. If it is specific images then if SVG not present bitmaps can be used.
+
+Neural Networks - perceptron \cite{Rosenblatt1958} (Rosenblatt 1958, 1962) , multi layer perceptron, features, weights and bias, activation functions (ReLu - Glorot, Bordes and Bengio 2011), loss function (Lecun, Chopra, Hadsell, Ranzato and Huang(2006) \cite{Lecun2006}, optimization algorithm (bottou, 2012;LeCun, Bottou, Orr, and Muller, 1988a) \cite{Bottou2012}.
+Feed forward neural networks - explanations (diagram and Hinton 2006, bengio 2007 and Ranzato 2007a) (could not find this instead downloaded a paper from 
+\url{https://ac.els-cdn.com/S0169743997000610/1-s2.0-S0169743997000610-main.pdf?_tid=a587c526-be5b-43aa-aec1-3d25fd8e3164&acdnat=1530007008_85f12aca7e2be91a96f0988f43836276} \cite{Svozil1997}
+
+Disadvantages of neural networks for NLP
+Convolution neural network - advantage (meant for images) and disadvantage (local characteristics anywhere in the data) (LeCun and Bengio 1995, Krizhevsky et al. 2012) \cite{Bengio1997} \cite{Krizhevsky}
+
+Regulatization - L2 regularization (no citation yet) and Dropout (hinton, srivastava, krizhevsky, sutskever and salakhutdinov 2012) \cite{Hinton2012}
+
+
+RNN - architecture, how does it support the sequence, (Elman, 1990) \cite{Elman}
+Back Propagation through time (BPTT) - (Werbos, 1990) \cite{Werbos1990}
+Long distance dependencies - LSTM and GRU (Hochreiter and Schmidhuber 1997) and (Cho et al.)
+(did not find the citation for GRU) \cite{Hochreiter1997}
+Recursive Neural Networks - for syntactic structure (trees ) (pollack 1990; socher, manning and ng 2010) \cite{Pollack1990} \cite{Socher}
+
 \color{black}
+
+Neural perspective (Hinton Shallice 1991)
+Model of brain function (Mcchullich and pitts 1943)
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[height=6cm,keepaspectratio=true]
+    {Feed_forward_neural_net.png}
+    \caption{
+        Feed forward neural network \cite{WikipediaEN_FeedForward_Network}.
+    }
+    \label{fig:Feed forward neural network}
+\end{figure}
+
+Neural networks are one of the state of the art models to build learning systems. They are inspired by brain's computational mechanism which consists of fundamental computational units called Neurons. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]
+    {Recurrent_neural_network_unfold.png}
+    \caption{
+        A basic example of RNN architecture \cite{WikipediaEN_RNN_unfold}.
+    }
+    \label{fig:A basic RNN architecture}
+\end{figure}
+
+
+
 \section{Approach}
 
 Deep learning systems are giving better results in building intellectual systems nowadays.\cite{Goldberg2016} The results achieved in applications such as Autonomous car driving, playing chess are almost equivalent to the skillsets of a human. There are different neural network models exists such as Feed Forward, Convolutional, Recurrent Neural Network models. Wikipedia contains a lot of articles and each articles contains text. Text is a sequence data where as position of words in it is dependent on the other. Recurrent Neural Networks bring out best results in many applications involving text data such as machine translation, super tagging.
