@@ -27,7 +27,7 @@
 \newcommand{\emailID}{kandhasamy@uni-koblenz.de}
 \newcommand{\matriculationID}{216100855}
 
-\newcommand{\Title}{Fake News Detection using Neural Network models of Wikipedia}
+\newcommand{\Title}{Fake news classification through Wikipedia using recurrent neural networks}
 \newcommand{\StartDate}{01-July-2018}
 \newcommand{\EndDate}{31-Dec-2018}
 \newcommand{\subject}{Institute for Web Science and Technologies}
@@ -35,7 +35,6 @@
 \newcommand{\supervisor}{Supervisor????} %inkl. Titel
 \newcommand{\secondSupervisor}{Lukas Schmelzeisen} %inkl. Titel
 \newcommand{\type}{Master Thesis}
-
 \begin{document}
 % ---------------------------------------------
 %	Title
@@ -219,7 +218,7 @@ Training is an essential part of learning and like many supervised algorithms a 
 
 Feedforward networks works very well on structured input data and incase of text data the input is arbitrary. Techniques such as continuous bag of words can be used to convert the arbitrary input into fixed length but it will lose the order of the text which is crucial. Convolutional neural network (CNN) \cite{Bengio1997} are good in capturing the local characteristics of data irrespective of its position. In this, a non linear function is applied to every k-word sliding window and captures the important characteristics of the word in that window. All the important characteristics from each window are combined by either taking maximum or average value from each window. This captures the important characteristics of sentence irrespective of their location. But yet the support for order is restricted only to local patterns and fails to recognize orders that are far apart in the sequence.
 
-Recurrent neural networks (RNN) accepts arbitrary size input, pays attention to the structure and considers the long dependencies \cite{Elman}. RNN takes input as an ordered list of input vectors such as x\textsubscript{i:j} with initial state vector h\textsubscript{0} and returns an ordered list of state vectors h\textsubscript{1},...,h\textsubscript{n} as well as an ordered list of output vectors o\textsubscript{1},...,o\textsubscript{n}. At time step t, RNN takes input a state vector h\textsubscript{t-1}, an input vector x\textsubscript{t} and outputs a new state vector h\textsubscript{t} as shown in the figure. The outputted state vector is used as input state vector at the next time step. The same weights for input, state and output are used in each and every time step.  
+Recurrent neural networks (RNN) accepts arbitrary size input, pays attention to the structure and considers the long dependencies \cite{Elman}. RNN takes input as an ordered list of input vectors such as x\textsubscript{i:j} with initial state vector h\textsubscript{0} and returns an ordered list of state vectors h\textsubscript{1},...,h\textsubscript{n} as well as an ordered list of output vectors o\textsubscript{1},...,o\textsubscript{n}. At time step t, RNN takes input a state vector h\textsubscript{t-1}, an input vector x\textsubscript{t} and outputs a new state vector h\textsubscript{t} as shown in the figure. The outputted state vector is used as input state vector at the next time step. The same weights for input, state and output vectors are used in each and every time step.   
 
 
 %RNN - architecture, how does it support the sequence, (Elman, 1990) 
@@ -237,6 +236,9 @@ Recurrent neural networks (RNN) accepts arbitrary size input, pays attention to 
     }
     \label{fig:A basic RNN architecture}
 \end{figure}
+
+To train RNN, the network is unrolled for the given input sequence and the loss function uses these nodes to compute the error and propagate backward depending on the application \cite{Werbos1990}. While training, the error gradients might vanish or explode especially when dealing with RNNs. The gradient explosion can be handled by clipping the gradient when it goes beyond the threshold. LSTM networks \cite{Hochreiter1997} solves vanishing gradient problem by introducing memory cells which remembers gradients across time steps. The memory cells are controlled by mathematical functions which simulate logical gates called gating components. At each time step, a decision is made by gating components on how much of current content of memory cell and new input should be retained. 
+
 
 \section{Approach}
 
