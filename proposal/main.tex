@@ -11,6 +11,7 @@
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.svg}
 \usepackage{hyperref}
 \usepackage{movie15}
+\usepackage{fixltx2e}
 
 \usepackage{color}
 \usepackage{graphicx}
@@ -197,43 +198,35 @@ Overall a couple of more research references need to be added. They could be com
 
 % ----------------------------------------------------------------------------
 \section{Background Study}
-\color{red}
 
-This section should talk about RNN , LSTM and different configurations. 
-Images can be used. Illustrations should be referred by SVG. If it is specific images then if SVG not present bitmaps can be used.
+Neural networks are state of the art models to build learning systems. In the beginning, neural networks are inspired by brain's computational mechanism \cite{McCulloch1943}. But nowadays, it is also inspired from many applied mathematics such as linear algebra, probability, information theory and numerical optimization methods\cite{Goodfellow2016}. Neural networks compose many interconnected fundamental functional units called neurons. Each neuron in the network takes in multiple scalar inputs and multiplies each input by a weight and then sums them, adds the result with a bias, applies a non-linear function at the end, which gives out a scalar output. There are different architectures of neural networks which vary mostly on how the neurons are connected to each other and how the weights are managed. 
 
-Neural Networks - perceptron \cite{Rosenblatt1958} (Rosenblatt 1958, 1962) , multi layer perceptron, features, weights and bias, activation functions (ReLu - Glorot, Bordes and Bengio 2011), loss function (Lecun, Chopra, Hadsell, Ranzato and Huang(2006) \cite{Lecun2006}, optimization algorithm (bottou, 2012;LeCun, Bottou, Orr, and Muller, 1988a) \cite{Bottou2012}.
-Feed forward neural networks - explanations (diagram and Hinton 2006, bengio 2007 and Ranzato 2007a) (could not find this instead downloaded a paper from 
-\url{https://ac.els-cdn.com/S0169743997000610/1-s2.0-S0169743997000610-main.pdf?_tid=a587c526-be5b-43aa-aec1-3d25fd8e3164&acdnat=1530007008_85f12aca7e2be91a96f0988f43836276} \cite{Svozil1997}
-
-Disadvantages of neural networks for NLP
-Convolution neural network - advantage (meant for images) and disadvantage (local characteristics anywhere in the data) (LeCun and Bengio 1995, Krizhevsky et al. 2012) \cite{Bengio1997} \cite{Krizhevsky}
-
-Regulatization - L2 regularization (no citation yet) and Dropout (hinton, srivastava, krizhevsky, sutskever and salakhutdinov 2012) \cite{Hinton2012}
-
-
-RNN - architecture, how does it support the sequence, (Elman, 1990) \cite{Elman}
-Back Propagation through time (BPTT) - (Werbos, 1990) \cite{Werbos1990}
-Long distance dependencies - LSTM and GRU (Hochreiter and Schmidhuber 1997) and (Cho et al.)
-(did not find the citation for GRU) \cite{Hochreiter1997}
-Recursive Neural Networks - for syntactic structure (trees ) (pollack 1990; socher, manning and ng 2010) \cite{Pollack1990} \cite{Socher}
-
-\color{black}
-
-Neural perspective (Hinton Shallice 1991)
-Model of brain function (Mcchullich and pitts 1943)
+Feedforward neural networks \cite{Svozil1997} can have multiple layers and each neuron in one layer is connected with every other neuron in the subsequent layer as given in the following figure. 
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[height=6cm,keepaspectratio=true]
     {Feed_forward_neural_net.png}
     \caption{
-        Feed forward neural network \cite{WikipediaEN_FeedForward_Network}.
+        Feed forward neural network with 4 neurons each in every layer \cite{WikipediaEN_FeedForward_Network}.
     }
     \label{fig:Feed forward neural network}
 \end{figure}
 
-Neural networks are one of the state of the art models to build learning systems. They are inspired by brain's computational mechanism which consists of fundamental computational units called Neurons. 
+There are 3 layers in the figure and the extracted features of raw data will be sent through input layer. Each circle is a neuron with incoming lines as inputs and outgoing lines as outputs to next layer. Each line carries a weight and the input layer has no weights since it has no incoming lines. The output layer has no outgoing lines and will be used as final output. In this figure the hidden layers has 4 neurons which will have 4 weights and 1 bias variable for each of its neurons. At the beginning, the weights and bias variable are assigned with initial values. Each neuron also has a non-linear activation function such as sigmoid, hyperbolic tangent, rectifiers etc. Different activation functions poses different advantages and rectifiers are used common. This activation function will help the neural network models to approximate any non-linear function. The output layer can use a transformation function such as softmax to convert values to represent a discrete probability distribution. In this figure, 4 neurons are used and so it refers to 4 labels and this system classifies the input into one of the labels.
+
+Training is an essential part of learning and like many supervised algorithms a loss function is used to compute the error for the estimated output against the actual output. Some of the loss functions that could be used are hinge (binary and multiclass), log loss, categorical cross-entropy loss etc. The gradient of the errors are calculated and propagated back to compute with respect to weights and bias. The values of the weights and bias are adjusted with respect to the gradient and a learning parameter. Typically a random batch of input are selected and parameters are applied and the output is computed. The average loss is computed for that batch and the parameters are reassigned. This optimization technique is called stochastic gradient descent \cite{Bottou2012} and other techniques available are Nesterov Momentum, AdaGrad etc. The overfitting in neural networks can be minimized by using regularization techniques such as L\textsubscript{2} regularization and dropout\cite{Hinton2012}. The L\textsubscript{2} regularization works by adding a squared penalty on parameters with respect to the function being minimized. The dropout works by randomly ignoring half of neurons in a networks or in every specific layer in each batch and corrects the error only using the parameters of other half of neurons. This helps to prevent the network from relying on only specific weights. 
+
+Feedforward networks works very well on structured input data and incase of text data the input is arbitrary. Techniques such as continuous bag of words can be used to convert the arbitrary input into fixed length but it will lose the order of the text which is crucial. Convolutional neural network (CNN) \cite{Bengio1997} are good in capturing the local characteristics of data irrespective of its position. In this, a non linear function is applied to every k-word sliding window and captures the important characteristics of the word in that window. All the important characteristics from each window are combined by either taking maximum or average value from each window. This captures the important characteristics of sentence irrespective of their location. But yet the support for order is restricted only to local patterns and fails to recognize orders that are far apart in the sequence.
+
+Recurrent neural networks (RNN) accepts arbitrary size input, pays attention to the structure and considers the long dependencies \cite{Elman}. RNN takes input as an ordered list of input vectors such as x\textsubscript{i:j} with initial state vector h\textsubscript{0} and returns an ordered list of state vectors h\textsubscript{1},...,h\textsubscript{n} as well as an ordered list of output vectors o\textsubscript{1},...,o\textsubscript{n}. At time step t, RNN takes input a state vector h\textsubscript{t-1}, an input vector x\textsubscript{t} and outputs a new state vector h\textsubscript{t} as shown in the figure. The outputted state vector is used as input state vector at the next time step. The same weights for input, state and output are used in each and every time step.  
+
+
+%RNN - architecture, how does it support the sequence, (Elman, 1990) 
+%Back Propagation through time (BPTT) - (Werbos, 1990) \cite{Werbos1990}
+%Long distance dependencies - LSTM and GRU (Hochreiter and Schmidhuber 1997) and (Cho et al.)
+%(did not find the citation for GRU) \cite{Hochreiter1997}
+%Recursive Neural Networks - for syntactic structure (trees ) (pollack 1990; socher, manning and ng 2010) \cite{Pollack1990} \cite{Socher}
 
 \begin{figure}[htpb]
     \centering
@@ -244,8 +237,6 @@ Neural networks are one of the state of the art models to build learning systems
     }
     \label{fig:A basic RNN architecture}
 \end{figure}
-
-
 
 \section{Approach}
 
