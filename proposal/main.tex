@@ -231,6 +231,21 @@ Recently convolutional neural network which character level input is giving out 
 %How do we create negative examples? What is the best way to do it for this kind of problem?
 %What lies can be detected effectively? This will explain what level of information is updated in wikipedia in each domain - constructing the dataset would be tricky. Can look at ways how to construct datasets based on the domain
 
+  - Generation of Training Data:
+    - Positive Examples: simplify Wikipedia sentences 
+    	- Remove the articles + extract the root word
+    	- Keep only the main sentence
+    - Negative Examples: replace words in positve examples at random
+    	- Swap the words randomly (not a good idea)
+    	- Replace words in positive examples at random
+    	- Replace according to Parts Of Speech
+    	- Replace with opposite to according to wordnet (can opposites be derived from word embeddings)
+    	- Use the dependency tree (replace with the dependency obj from different sentences)
+  - Classification Techniques:
+    - RNN, LSTM, Multi-layer LSTM
+    - Background Knowledge: Wikidata or BabelNet (knowledge graphs)
+      - http://babelfy.org/ for entity resolution
+
 
 \color{red}
 Overall the things to do listed here are less and need to be appended more. Most of the stuff will be done in the prototyping phase itself . Will have to think about including ideas such as using DBPedia or any semantic database which is precisely expressed, Usage of any specific word embeddings or think of some other NLP techniques which could be used. Will have to be concrete at the same time. Need not be very strict - such as things specified here when both the parties agreed can be changed. Add new stuff, delete some other stuff and change or take a new direction. Things are possible but be reasonable
@@ -259,6 +274,13 @@ The baseline system is a very simple RNN and the improvements are added on top o
 \end{enumerate}
 
 The goodness of the system can be measured by metrics such as Precision, Recall, F1 measure and Accuracy. F1 measure is preferred since it includes both false positive and false negatives. The speed of system can be measured iteratively by calculating results of loss function. In this master thesis, the focus is mainly on improving the accuracy of the system and the speed of the system is handled by using good hardwares. 
+
+So far what ever has been written should be removed :-)
+
+Evaluation can be done in two ways
+one is internal - just to check whether wikipedia classifier is working properly. i.e. given a sentence whether it is present or not
+the other is external - testing whether it is a fake news detector. we can check against other system performances
+
 
 \newpage
 
