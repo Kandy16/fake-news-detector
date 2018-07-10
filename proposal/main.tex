@@ -78,16 +78,16 @@ The unprecedented growth in production and dissemination of information leads to
 According to Lazer et al.\cite{Lazer1094}, Fake news is a false information, constructed intentionally (disinformation) or unintentionally (misinformation) and the publishers does not have rigorous news media's editorial norms for making sure of accuracy and credibility. Fake news is prevalent and a research study from Allcot and Gentzkow \cite{Allcott2017} state that "average American adult saw on the order of one or perhaps several fake news stories in the months around the election, with just over half of those who recalled seeing them believing them". A large-scale empirical study with twitter dataset by Vosoughi et al. \cite{Vosoughi1146}, reveals that fake news spread longer, faster, deeper and broader than the legitimate news. It also reveals that the effects of fake news are more prominent in a political context than news about terrorism, natural disaster, science and other domains.
 
 %Fake news detection template - Compare against reliable source of information - that is the way to detect it, experts from each domain give their views and a consolidated decision (Citation?) Systems such as factcheck, snopes etc How they do it as against the rate at which fake news is generated?. %Manual correction is not possible. Web has seen an unprecedented growth. It is important to have automated means. (Citation?)
-Most often fake news is detected by people and organizations through their common sense. There are many facts checking websites such as for e.g. snopes.com, factcheck.org, politfact.com etc. which uses collaborative effort of domain experts. In the websites, each news is tagged with a fact meter to refer their authenticity. The main strategy to handle fake news is to check against a reliable source of information and claim its integrity. Although this is fairly good, since it requires manual effort, it is not available for all domains and not scalable. Also, it is unmatchable to the rate at which the information is produced because of many social networks, blogging sites etc.
+Most often fake news is detected by people and organizations through their common sense. There are many facts checking websites such as for e.g. snopes.com, factcheck.org, politifact.com etc. which uses collaborative effort of domain experts. In the websites, each news is tagged with a fact meter to refer their authenticity. The main strategy to handle fake news is to check against a reliable source of information and claim its integrity. Although this is fairly good, since it requires manual effort, it is not available for all domains and not scalable. Also, it is unmatchable to the rate at which the information is produced because of many social networks, blogging sites etc.
 
 %Wikipedia - say 1 or 2 sentences about it being a source of information - different subject matters - wide coverage. Frequency of updates (Citation?). About the reliability of source of information in wikipedia (Citation?) - Wikipedia is peer reviewed as against the newspaper
-Wikipedia is a free online encyclopedia available in more than 300 languages with a principle that anyone can edit. It has got a wide range of domains covered with many articles written under each domain \cite{Wales2005}. According to Alexa and SimilarWeb, Wikipedia is considered to be the fifth most popular website. According to Wikipedia, the English Wikipedia consists the highest number of articles at present amounting to approximately 500 million. The range of subject covered is wide such as for e.g. Art, Culture, Science, Mathematics, Religion etc. and it is maintained by many authors. The frequency of the update in English Wikipedia is very high and it is approximately equal to 10 updates per second and 600 articles per day. Although it can be edited by anyone, an investigation carried out by Nature, reveals that the quality of content is similar to another encyclopedia such as Britannica \cite{Wales2005}. Although there can be malicious users in Wikipedia, the culture and the community ensures most of the high impactful errors are rectified very quickly\cite{Priedhorsky2007}. Thus English Wikipedia can be used as a proxy for a reliable source of information since most of the content is truthy.
+Wikipedia is a free online encyclopedia available in more than 300 languages with a principle that anyone can edit \cite{Wales2005}. It has got a wide range of domains covered with many articles written under each domain. According to Alexa\footnote{https://www.alexa.com} and SimilarWeb\footnote{https://www.similarweb.com}, Wikipedia is considered to be the fifth most popular website. According to Wikipedia, the English Wikipedia consists the highest number of articles at present amounting to approximately 500 million. The range of subject covered is wide such as for e.g. Art, Culture, Science, Mathematics, Religion etc. and it is maintained by many authors. The frequency of the update in English Wikipedia is very high and it is approximately equal to 10 updates per second and 600 articles per day. Although it can be edited by anyone, an investigation carried out by Nature\footnote{https://www.nature.com}, reveals that the quality of content is similar to another encyclopedia such as Britannica\footnote{https://www.britannica.com/} \cite{Wales2005}. Although there can be malicious users in Wikipedia, the culture and the community ensures most of the high impactful errors are rectified very quickly\cite{Priedhorsky2007}. Thus English Wikipedia can be used as a proxy for a reliable source of information since most of the content is true.
  
 %Deeplearning - what is it? Advantages and how is it performing against others? How NLP problems are handled using RNN? What applications?
 Understanding Wikipedia is a complex task since it requires understanding the subtleties of English natural language and the context. Machine Learning is the capability of systems learning patterns from raw data. Different features of raw data need to be extracted separately and fed to Machine learning algorithms to get good performance. This drawback is solved by using Deep Learning, which uses neural networks, a multi-layer network of simple representations to learn complex data representations and then extracts patterns out of the data\cite{Goodfellow2016}. Deep Learning provides state-of-the-art results in the field such as image recognition, speech recognition, and natural language processing.
 
 %Fake news detection using wikipedia as a ground reality (Attempt in Master thesis)
-The focus of the master thesis is to use Wikipedia as a ground reality or as a source of experts opinion and use this knowledge to cross-check claims automatically. Whether the information is present in Wikipedia or not will be used as a proxy for information being considered as Truthy or Fake. Recurrent neural networks with different configurations will be used to understand Wikipedia and the results of each will be compared against each other to understand better.
+The focus of the master thesis is to use Wikipedia as a ground reality or as a source of experts opinion and use this knowledge to cross-check claims automatically. Whether the information is present in Wikipedia or not will be used as a proxy for information being considered as true or fake. Recurrent neural networks with different configurations will be used to understand Wikipedia and the results of each will be compared against each other to understand better.
 
 % ----------------------------------------------------------------------------
 \section{Related work}
@@ -97,7 +97,11 @@ The focus of the master thesis is to use Wikipedia as a ground reality or as a s
 % Platform based methods - manual/semi automated /automated feature engineering efforts
 % Checking the authenticity semantically - using RDF, wikipedia
 
-Many efforts in research have been put in to detect fake news in microblogging platforms such as Twitter. Most of these works classify the news as truth or fake by using the platform/user-specific information such as how popular the post is, the credibility of the user who shared it, diffusion patterns etc \cite{Liu2015} \cite{Ma2015}. Zhao, et al. \cite{Zhao2015} have used cue terms such as 'not true', 'unconfirmed' etc in retweets or the comments to detect fake news. The reasoning in their approach is that when people exposed to fake news they will comment or retweet with such words as a response to the post. Other studies focused on using the temporal characteristics of fake news during the spread. Kwon et al.\cite{Kwon2013} used tweet volume in time series and Ma, et al.\cite{Ma2015} measured variations of social context features over time. All the attempts made in the above researches involve handcrafted feature engineering which is critical, biased and very time-consuming.
+Many efforts in research have been put in to detect fake news in microblogging platforms such as Twitter. Most of these works classify the news as truth or fake by using the platform/user-specific information such as how popular the post is, the credibility of the user who shared it, diffusion patterns etc \cite{Liu2015} \cite{Ma2015}. Zhao, et al. \cite{Zhao2015} have used cue terms such as 'not true', 'unconfirmed' etc in retweets or the comments to detect fake news. The reasoning in their approach is that when people exposed to fake news they will comment or retweet with such words as a response to the post. Other studies focused on using the temporal characteristics of fake news during the spread. Kwon et al.\cite{Kwon2013} used tweet volume in time series and Ma, et al.\cite{Ma2015} measured variations of social context features over time. 
+
+All the research indicated before used datasets which are smaller in size. Wang \cite{Wang2017} curated dataset which consists approximately 13000 short statements by mining politfact.com covering a decade of information. In this approach, 6 machine learning models are built ranging from logistic regression to the convolutional neural network and compared. Along with the text data, metadata such as the speaker, subject, speaker history are also used. The convolutional neural network model used to capture surface level linguistics along with metadata performed better than other models.
+
+All the attempts made in the above researches involve handcrafted feature engineering which is critical, biased and very time-consuming.
 
 Jing Ma et al.\cite{Ma} efforts are focused on building a recurrent neural network (RNN) to detect rumors from Microblogs such as Twitter and Weibo effectively. The training dataset used is obtained by using constructed keywords in fake and truthy news from debunking services such as Snopes and Sina community management center. These keywords are used in Search API's of Microblogs and the tweet results of a search are labeled respectively. The social context information of a post and all its relevant posts such as comments or retweets is modeled as a variable-length time series. RNNs with different configurations such as one or two layers of GRU and LSTM are used and achieved very good results in capturing long-distance dependencies of temporal and textual representations of posts under supervision. This method completely avoids all the handcrafted feature engineering efforts which are biased and time-consuming. It produces better results with datasets from Twitter and Sina Weibo than all of the traditional Machine Learning methods. RNNs with two layers of GRU gave the best results and it was also very quick in predicting the rumor where the average time from debunking services.
 
@@ -106,10 +110,6 @@ The above method uses platform-specific features immensely such as retweets, com
 Ciampaglia et al. \cite{Ciampaglia2015} used DBPedia for checking computationally whether a given information is factual or not. The work uses the knowledge graph built from DBPedia which represents infobox section in Wikipedia. This represents only non-controversial and factual information which is analogous to human collected information. The methodology formulates the problem of checking facts into a network analysis problem which is finding the shortest path between nodes (subject and object of a sentence) in a graph. The aggregated generalities of nodes along a path in a weighted undirected graph are used as a metric for measuring the authenticity of information. The more the elements are generic; the weaker the truthfulness is.  The genericness of a node is obtained by the degree of that node - no. of nodes connected to that node. The truthfulness of the information is improved if there exists at least one path from subject to an object with minimal non-generic nodes. This approach exploits the indirect connections to a great extent with distance constraints in a knowledge graph. The approach gave promising results when tested with datasets containing simple factual information about history, geography, entertainment, and biography. 
 
 The above research is a good initial step towards an automated fact checker system using the only semantics of data. The problem of fake news attempted is very primitive and uses only 'is' or 'type of' relation. The current fake news is very complex and subtle when it comes to ambiguities. In this approach, DBPedia is used and according to their sources, the update/synch frequency is slower than Wikipedia by 6 to 18 months.
-
-\color{red}
-Overall a couple of more research references need to be added. They could be completely different or similar. If similar then refer in the same paragraphs and state what is different and how is it done
-\color{black}
 
 %limitations
 %-----------
@@ -173,6 +173,11 @@ Feedforward networks work very well on structured input data and in case of text
 
 Recurrent neural networks (RNN) accept arbitrary input size, pays attention to the structure and consider the long dependencies \cite{Elman}. RNN takes input as an ordered list of input vectors such as x\textsubscript{i:j} with initial state vector h\textsubscript{0} and returns an ordered list of state vectors h\textsubscript{1},...,h\textsubscript{n} as well as an ordered list of output vectors o\textsubscript{1},...,o\textsubscript{n}. At time step t, RNN takes input a state vector h\textsubscript{t-1}, an input vector x\textsubscript{t} and outputs a new state vector h\textsubscript{t} as shown in the figure. The outputted state vector is used as input state vector at the next time step. The same weights for input, state, and output vectors are used in each and every time step.   
 
+%\begin{equation}
+%RNN(h\textsc{0},x\textsc{1:n}) = h\textsc{1:n}, o\textsc{1:n}
+%h\textsc{i} = R(h\textsc{i-1}, x\textsc{i})
+%o\textsc{i} = 
+%\end{equation}
 
 %RNN - architecture, how does it support the sequence, (Elman, 1990) 
 %Back Propagation through time (BPTT) - (Werbos, 1990) \cite{Werbos1990}
@@ -236,28 +241,24 @@ At some point when the methodology is specified, there should be a paragraph exp
 % ----------------------------------------------------------------------------
 \section{Evaluation}
 
-The training, evaluation and test dataset needs to be curated. 
+In order to do fake news classification using supervised machine learning approach, it is important to have a good and voluminous dataset. This dataset will be split and used for training, validation, and testing of the system. A general rule of thumb is to divide the dataset into 60-20-20 for training, validation, and testing respectively. But if the datasets are in order of millions then it is good enough to have approximately 10000 entries each for validation and testing. The validation dataset is used to compute the optimal values for the parameters of the model such as learning rate, no. of hidden layers, batch size etc.
 
-More or less equal data should be present for each bin such as facts and lies.
+It should be ensured that more or less equal amount of data should be present for both true and fake news. It is easy to extract true news for this project which is done by considering every statement in Wikipedia. Whereas curating fake news is a bit tricky since it does not exist. 
 
-Extract sentence from wikipedia and give it as it is.
+Some of the approaches that could be taken to construct fake news are
+\begin{enumerate}
+\item Take each sentence from Wikipedia and distort it by swapping the words randomly.
+\item There are two comprehensive open datasets available. One of it is published in Kaggle\footnote{https://www.kaggle.com/mrisdal/fake-news} which consists structured data of 13K size. The LIAR dataset is published by Wang \cite{Wang2017} which is mined from politifact.com and it consists approximately 13K entries.
+\item Fake news can be obtained directly from facts checking websites such as snopes.com, politifact.com, etc., by crawling or using the API's provided.
+\end{enumerate}
 
-Distort the sentence by swapping and give it.
+The baseline system is a very simple RNN and the improvements are added on top of it. The following are the factors which are used to compare the baseline with the improved system
+\begin{enumerate}
+\item How good the system is able to classify the fake news?
+\item How fast the model is build up?
+\end{enumerate}
 
-Construct good facts and lies outside - a proper labelled dataset and see how it works.
-
-Use the dataset provided by researches indicated in related work section.
-
-Look for already curated community wide popular datasets for fake news.
-
-Have a baseline.
-
-Compare each configuration against baseline and measure the accuracy, time taken. If the curated dataset has many groups of varying complexity then state the results groupwise
-
-
-\color{red}
-The structure is good. Might have to explain the metrics listed. Why it is chosen and why it is important. Let us say for e.g. if we choose our implementation only aiming speed then time taken is important
-\color{black}
+The goodness of the system can be measured by metrics such as Precision, Recall, F1 measure and Accuracy. F1 measure is preferred since it includes both false positive and false negatives. The speed of system can be measured iteratively by calculating results of loss function. In this master thesis, the focus is mainly on improving the accuracy of the system and the speed of the system is handled by using good hardwares. 
 
 \newpage
 
@@ -280,28 +281,30 @@ Secondary supervisor: \> \secondSupervisor{}\\
 
 \begin{itemize}
 	\item Introduction and Literature: 01-May-2018 – 30-June-2018
-	\item Initial Phase: 01-July-2018 – 15-Sep-2018
+	\item Initial phase: 01-July-2018 – 15-Sep-2018
 	\begin{itemize}
 		\item Prototyping: 01-July-2018 – 30-July-2018
-		\item Implementing ML Pipeline: 01-Aug-2018 – 15-Aug-2018
-        \item Baseline Implementation: 16-Aug-2018 – 30-Aug-2018
+		\item ML pipeline implementation: 01-Aug-2018 – 15-Aug-2018
+        \item Baseline implementation: 16-Aug-2018 – 30-Aug-2018
         \item Testing and refining: 01-Sep-2018 – 15-Sep-2018
 	\end{itemize}
-	\item Development Phase: 16-Sep-2018 – 30-Nov-2018
+	\item Development phase: 16-Sep-2018 – 30-Dec-2018
 	\begin{itemize}
-		\item Prototyping: 01-July-2018 – 30-July-2018
-		\item Implementing ML Pipeline: 01-Aug-2018 – 15-Aug-2018
-        \item Baseline Implementation: 16-Aug-2018 – 30-Aug-2018
-        \item Testing and refining: 01-Sep-2018 – 15-Sep-2018
+		\item RNN with different configuration: 16-Sep-2018 – 30-Oct-2018
+		\item Comprehend benchmark results: 16-Oct-2018 – 21-Oct-2018
+		\item Analyse and figure out improvements: 22-Oct-2018 – 30-Oct-2018
+        \item Improvisation using NLP techniques: 01-Nov-2018 – 30-Dec-2018
+        \item Comprehend benchmark results: 16-Dec-2018 – 30-Dec-2018
 	\end{itemize}
-	\item Final Phase: 01-Dec-2018 – 30-Dec-2018
+	\item Final phase: 01-Jan-2019 – 01-Feb-2019
 	\begin{itemize}
-	 	\item Comprehend Benchamark results: 01-Dec-2018 – 15-Dec-2018
-		\item Revision: 08-Dec-2018 – 22-Dec-2018
-		\item Thesis report: 01-Dec-2018 – 30-Dec-2018
+	 	\item Comprehend Benchamark results: 01-Jan-2019 – 07-Jan-2019
+		\item Revision: 08-Jan-2019 – 22-Jan-2019
+		\item Thesis report: 01-Jan-2019 – 30-Jan-2019
 	\end{itemize}
 \end{itemize}
 
+A meeting with Lukas Schmelzeisen will happen approximately once in two weeks to discuss about the progress made and set the targets and milestones for subsequent weeks. 
 
 % ----------------------------------------------------------------------------
 \bibliographystyle{alpha}
