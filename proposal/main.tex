@@ -200,7 +200,7 @@ To train RNN, the network is unrolled for the given input sequence and the loss 
 
 \section{Approach}
 
-As Recurrent neural networks are good with sequential data, we will use it extensively in this master thesis. TensorFlow\footnote{https://www.tensorflow.org/}, a python library for building intensive numerical computation applications and deploy it in multiple platforms such as CPU, GPU etc, will be used to develop RNN architecture. Wikipedia consist a lot of articles; each article consist a lot of sentences. Each sentence could be fed as input to the neural network. The different configurations of neural network will be used and the performance of each will be compared against the other. Some of the configurations of neural network are
+We will use  Recurrent neural networks in the master thesis extensively since they are good with sequential data. TensorFlow\footnote{https://www.tensorflow.org/}, a python library for building intensive numerical computation applications and deploy it in multiple platforms such as CPU, GPU etc, will be used to develop RNN architecture. Wikipedia consists of a lot of articles; each article consists of a lot of sentences. Each sentence could be fed as input to the neural network. The different configurations of the neural network will be used and the performance of each will be compared against the other. Some of the configurations of the neural network are
 
 \begin{enumerate}
 \item Different layers
@@ -217,31 +217,31 @@ The dataset will be split and used for training, validation, and testing of the 
 It is important to do pre-processing on the dataset which involves a series of steps.
 \begin{enumerate}
 \item removal of common words such as articles for e.g a, the etc; 
-\item lemmetization of verbs which involves bringing the conjugated verbs into its root form 
+\item lemmatization of verbs which involves bringing the conjugated verbs into its root form 
 \end{enumerate}
 
-Since we use wikipedia as a proxy for authentic information, each sentence in the wikipedia is considered as true news. There is hardly any false news present. For training to be successful to build a good fake news detector, it should be ensured that more or less equal amount of data should be present for both true and fake news. The construction of false news is tricky and we will use different natual language processing (NLP) methods and compare which one is giving good results. Spacy\footnote{https://www.spacy.io}, a python library to do NLP tasks will be used for extracting parts of speech, named entity and dependency relations. Some techniques are 
+Since we use Wikipedia as a proxy for authentic information, each sentence in the Wikipedia is considered as true news. There is hardly any false news present. For training to be successful to build a good fake news detector, it should be ensured that more or less equal amount of data should be present for both true and fake news. The construction of false news is tricky and we will use different natural language processing (NLP) methods and compare which one is giving good results. Spacy\footnote{https://www.spacy.io}, a python library to do NLP tasks will be used for extracting parts of speech, named entity and dependency relations. Some techniques are 
 \begin{enumerate}
-\item Swap the words randomly in each and every sentence extracted from wikipedia
-\item Replace the random words picked in a sentence with a random word from corpus
-\item Replace the words in a sentence based on their parts of speech. In this method, a vocabulory of words is maintained for each parts of speech section and randomly one of it is chosen
+\item Swap the words randomly in each and every sentence extracted from Wikipedia
+\item Replace the random words picked in a sentence with a random word from the corpus
+\item Replace the words in a sentence based on their parts of speech. In this method, a vocabulary of words is maintained for each Parts of Speech section and randomly one of it is chosen
 \item Replace the words in each sentence with their opposites extracted from WordNet\footnote{https://wordnet.princeton.edu/}
 \item Extract the dependency tree for each sentence and select an appropriate one from other sentences to replace it
 \end{enumerate}
 
 % Background Knowledge: Wikidata or BabelNet (knowledge graphs), http://babelfy.org/ for entity resolution
 
-The above methods involve modeling the content of wikipedia in such a way that the system can understand it better. These procedures are completely automatic in building the training examples and none of the features are manually crafted. The RNN and different configurations of the system along with unique methods in constructing the training data will be able to understand wikipedia better. This will be a improved semantic understanding of wikipedia and by using this fake news detection can be carried out in a platform agnostic manner. 
+The above methods involve modeling the content of Wikipedia in such a way that the system can understand it better. These procedures are completely automatic in building the training examples and none of the features are manually crafted. The RNN and different configurations of the system along with unique methods in constructing the training data will be able to understand Wikipedia better. This will be an improved semantic understanding of Wikipedia and by using this fake news detection can be carried out in a platform agnostic manner. 
 
 % ----------------------------------------------------------------------------
 \section{Evaluation}
 
-The evaluation can be done both internally and externally. The system can be evaluated based on how well it is able to understand wikipedia. This is done by inputting random sentences or the sentences taken from wikipedia and check whether it is present or not. 
+The evaluation can be done both internally and externally. The system can be evaluated based on how well it is able to understand Wikipedia. This is done by inputting random sentences or the sentences taken from Wikipedia and check whether it is present or not. 
 
-In addition to that, the system can be evaluated as a fake news detector. There are two ways by which test dataset can be prepared. 
+In addition to that, the system can be evaluated as a fake news detector. There are two ways by which the test dataset can be prepared. 
 
 \begin{enumerate}
-\item There are two comprehensive open datasets available. One of it is published in Kaggle\footnote{https://www.kaggle.com/mrisdal/fake-news} which consists structured data of 13K size. The LIAR dataset is published by Wang \cite{Wang2017} which is mined from politifact.com and it consists approximately 13K entries.
+\item There are two comprehensive open datasets available. One of it is published in Kaggle\footnote{https://www.kaggle.com/mrisdal/fake-news} which consists of structured data of 13K size. The LIAR dataset is published by Wang \cite{Wang2017} which is mined from politifact.com and it consists approximately 13K entries.
 \item Fake news can be obtained directly from facts checking websites such as snopes.com, politifact.com, etc., by crawling or using the API's provided.
 \end{enumerate}
 
@@ -251,7 +251,7 @@ The baseline system is a very simple RNN and the improvements are added on top o
 \item How fast the model is build up?
 \end{enumerate}
 
-The goodness of the system can be measured by metrics such as Precision, Recall, F1 measure and Accuracy. F1 measure is preferred since it includes both false positive and false negatives. The speed of system can be measured iteratively by calculating results of loss function. In this master thesis, the focus is mainly on improving the accuracy of the system and the speed of the system can be improved by using good hardwares. 
+The goodness of the system can be measured by metrics such as Precision, Recall, F1 measure, and Accuracy. The F1 measure is preferred since it includes both false positive and false negatives. The speed of the system can be measured iteratively by calculating the results of the loss function. In this master thesis, the focus is mainly on improving the accuracy of the system and the speed of the system can be improved by using good hardware.  
 
 \newpage
 
