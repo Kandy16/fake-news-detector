@@ -12,6 +12,9 @@
 \usepackage{hyperref}
 \usepackage{movie15}
 \usepackage{fixltx2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
 
 \usepackage{color}
 \usepackage{graphicx}
@@ -22,6 +25,7 @@
 % ---------------------------------------------
 %	Commands definition
 % ---------------------------------------------
+\newcommand{\R}{\mathbb{R}}
 
 \newcommand{\myName}{Kandhasamy Rajasekaran}
 \newcommand{\emailID}{kandhasamy@uni-koblenz.de}
@@ -65,30 +69,30 @@ Department f\"{u}r Informatik,
 %	Content
 % -----------------------------------------------------------------------------
 \selectlanguage{english}
-\begin{abstract}
-\frenchspacing
-\noindent
-The unprecedented growth in production and dissemination of information leads to an unprecedented growth in production and dissemination of fake news. Fake news hinders the society from progress by deterring the pursuit of true information. It is very essential to have a mechanism to detect and control fake news. Several attempts have been made which uses platform specific features, collaborative efforts of domain experts to control fake news. This research work will use wikipedia as a ground reality and cross check claims automatically. Recurrent neural networks will be used to understand wikipedia along with multiple novel ways to build false news. The performance of different configurations of neural networks will be analyzed and benchmarked against each other.
-\end{abstract}
+%\begin{abstract}
+%\frenchspacing
+%\noindent
+%The unprecedented growth in production and dissemination of information leads to an unprecedented growth in production and dissemination of fake news. Fake news hinders the society from progress by deterring the pursuit of true information. It is very essential to have a mechanism to detect and control fake news. Several attempts have been made which uses platform specific features, collaborative efforts of domain experts to control fake news. This research work will use wikipedia as a ground reality and cross check claims automatically. Recurrent neural networks will be used to understand wikipedia along with multiple novel ways to build false news. The performance of different configurations of neural networks will be analyzed and benchmarked against each other.
+%\end{abstract}
 % -----------------------------------------------------------------------------
 \section{Introduction}
 \frenchspacing
 
 %Fake news - definition(Citation?) and prevalence
-According to Lazer et al.\cite{Lazer1094}, Fake news is a false information, constructed intentionally (disinformation) or unintentionally (misinformation) and the publishers does not have rigorous news media's editorial norms for making sure of accuracy and credibility. Fake news is prevalent and a research study from Allcot and Gentzkow \cite{Allcott2017} state that "average American adult saw on the order of one or perhaps several fake news stories in the months around the election, with just over half of those who recalled seeing them believing them". A large-scale empirical study with twitter dataset by Vosoughi et al. \cite{Vosoughi1146}, reveals that fake news spread longer, faster, deeper and broader than the legitimate news. It also reveals that the effects of fake news are more prominent in a political context than news about terrorism, natural disaster, science and other domains.
+According to Lazer et al.\cite{Lazer1094}, Fake news is a false information, constructed intentionally (disinformation) or unintentionally (misinformation) and the publishers does not have rigorous news media's editorial norms for making sure of accuracy and credibility. The focus of this master thesis is to classify a claim as true or fake news by using Wikipedia as a ground reality. In this thesis work, the information in Wikipedia will be captured using different approaches and will be evaluated based on how good it classifies fake news.
+
+Fake news is prevalent and a research study from Allcot and Gentzkow \cite{Allcott2017} state that "average American adult saw on the order of one or perhaps several fake news stories in the months around the election, with just over half of those who recalled seeing them believing them". A large-scale empirical study with twitter dataset by Vosoughi et al. \cite{Vosoughi1146}, reveals that fake news spread longer, faster, deeper and broader than the legitimate news. It also reveals that the effects of fake news are more prominent in a political context than news about terrorism, natural disaster, science and other domains.
 
 %Fake news detection template - Compare against reliable source of information - that is the way to detect it, experts from each domain give their views and a consolidated decision (Citation?) Systems such as factcheck, snopes etc How they do it as against the rate at which fake news is generated?. %Manual correction is not possible. Web has seen an unprecedented growth. It is important to have automated means. (Citation?)
-Most often fake news is detected by people and organizations through their common sense. There are many facts checking websites such as for e.g. snopes.com, factcheck.org, politifact.com etc. which uses collaborative effort of domain experts. In their websites, each news is tagged with a fact meter to refer its authenticity. The main strategy to handle fake news is to check against a reliable source of information and claim its integrity. Although this is fairly good, since it requires manual effort, it is not available for all domains and not scalable. Also, it is unmatchable to the rate at which the information is produced because of many social networks, blogging sites etc.
+Most often fake news is detected by people and organizations through their common sense. There are many facts checking websites such as for e.g. snopes.com, factcheck.org, politifact.com etc. which uses collaborative effort of domain experts. In these websites, each news is tagged with a fact meter to refer its authenticity. The main strategy to handle fake news is to check against a reliable source of information and claim its integrity. Although this is fairly good, since it requires manual effort, it is not available for all domains. Also, it is unmatchable to the rate at which the information is produced because of many social networks, blogging sites etc.
 
 %Wikipedia - say 1 or 2 sentences about it being a source of information - different subject matters - wide coverage. Frequency of updates (Citation?). About the reliability of source of information in wikipedia (Citation?) - Wikipedia is peer reviewed as against the newspaper
-Wikipedia is a free online encyclopedia available in more than 300 languages with a principle that anyone can edit \cite{Wales2005}. It has got a wide range of domains covered with many articles written under each domain. According to Alexa\footnote{https://www.alexa.com} and SimilarWeb\footnote{https://www.similarweb.com}, Wikipedia is considered to be the fifth most popular website. According to Wikipedia, the English Wikipedia consists the highest number of articles at present amounting to approximately 500 million. The range of subject covered is wide such as for e.g. Art, Culture, Science, Mathematics, Religion etc. and it is maintained by many authors. The frequency of the update in English Wikipedia is very high and it is approximately equal to 10 updates per second and 600 articles per day. Although it can be edited by anyone, an investigation carried out by Nature\footnote{https://www.nature.com}, reveals that the quality of content is similar to another encyclopedia such as Britannica\footnote{https://www.britannica.com/} \cite{Wales2005}. Although there can be malicious users in Wikipedia, the culture and the community ensures most of the high impactful errors are rectified very quickly\cite{Priedhorsky2007}. Thus English Wikipedia can be used as a proxy for a reliable source of information since most of its content is true.
+Wikipedia is a free online encyclopedia available in more than 300 languages with a principle that anyone can edit \cite{Wales2005}. It covers a wide range of domains whereas many articles are available in each domain. According to Alexa\footnote{https://www.alexa.com} and SimilarWeb\footnote{https://www.similarweb.com}, Wikipedia is considered to be the fifth most popular website. According to Wikipedia in 2018, the English Wikipedia consists the highest number of articles amounting to approximately 500 million. Also, the frequency of the updates in English Wikipedia is very high and it is approximately equal to 10 updates per second and 600 articles per day. According to a research by Halavais et al. \cite{Halavais2008}, it is estimated that domains such as music, geography, science and literature constitute atleast 5 percent of total articles each in Wikipedia. Although it can be edited by anyone, an investigation carried out by Nature\footnote{https://www.nature.com}, reveals that the quality of content is similar to another encyclopedia such as Britannica\footnote{https://www.britannica.com/} \cite{Wales2005}. Although there can be malicious users in Wikipedia, the culture and the community ensures most of the high impactful errors are rectified very quickly\cite{Priedhorsky2007}. Thus English Wikipedia can be used as a proxy for a reliable source of information since most of its content is true.
  
-%Deeplearning - what is it? Advantages and how is it performing against others? How NLP problems are handled using RNN? What applications?
-Understanding Wikipedia is a complex task since it requires understanding the subtleties of English natural language and the context. Machine Learning is the capability of systems learning patterns from raw data. Different features of raw data need to be extracted separately and fed to Machine learning algorithms to get good performance. This drawback is solved by using Deep Learning, which uses neural networks, a multi-layer network of simple representations to learn complex data representations and then extracts patterns out of the data\cite{Goodfellow2016}. Deep Learning provides state-of-the-art results in the field such as image recognition, speech recognition, and natural language processing.
-
 %Fake news detection using wikipedia as a ground reality (Attempt in Master thesis)
-The focus of the master thesis is to use Wikipedia as a ground reality or as a source of experts opinion and use this knowledge to cross-check claims automatically. Whether the information is present in Wikipedia or not will be used as a proxy for information being considered as true or fake. Recurrent neural networks with different configurations will be used to understand Wikipedia and the results of each will be compared against each other to understand better.
+In this master thesis, the Wikipedia will be considered as a ground reality or as a source of experts opinion and this knowledge will be used to cross-check claims automatically. The presence or absence of information in Wikipedia will be used as a proxy for information being considered as true or fake. Recurrent neural networks with different configurations will be used to understand Wikipedia and the results of each will be compared against each other to understand better.
 
+The "Related work" section consists a brief summary of different researches done in the past which are relevant to fake news classification using semantics and platform specific features. An introduction of neural networks, different architectures of neural networks to model sequence data and the training process involved to optimize the model parameter values are covered in "Background study" section. The "Approach" section comprises the overall work to be done in the thesis which includes different techniques of modeling the information in Wikipedia to build a good fake news classifier. The "Evaluation" section describes what factors will be considered for evaluting the classifier and what standard test datasets will be used to benchmark against each other.
 % ----------------------------------------------------------------------------
 \section{Related work}
 
@@ -151,33 +155,78 @@ The above research is a good initial step towards an automated fact checker syst
 % ----------------------------------------------------------------------------
 \section{Background Study}
 
-Neural networks are state of the art models to build learning systems. In the beginning, neural networks are inspired by the brain's computational mechanism \cite{McCulloch1943}. But nowadays, it is also inspired from many applied mathematics such as linear algebra, probability, information theory and numerical optimization methods\cite{Goodfellow2016}. Neural networks compose many interconnected fundamental functional units called neurons. Each neuron in the network takes in multiple scalar inputs and multiplies each input by a weight and then sums them, adds the result with a bias, applies a non-linear function at the end, which gives out a scalar output. There are different architectures of neural networks which vary mostly in how the neurons are connected to each other and how the weights are managed. 
+Neural networks are state of the art models to build learning systems. In the beginning, neural networks were inspired by the brain's computational mechanism \cite{McCulloch1943}. Neural networks compose many interconnected, fundamental, functional units called neurons. Each neuron in the network takes in multiple scalar inputs and multiplies each input by a weight and then sums them, adds the result with a bias, applies a non-linear function at the end, which gives out a scalar output. There are different architectures of neural networks which vary mostly in how the neurons are connected to each other and how the weights are managed. 
 
-Feedforward neural networks \cite{Svozil1997} can have multiple layers and each neuron in one layer is connected with every other neuron in the subsequent layer as given in the following figure. 
+Feedforward neural networks \cite{Svozil1997} can have multiple layers and each neuron in one layer is connected with every other neuron in the subsequent layer as given in the Figure \ref{fig:Feed forward neural network}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[height=6cm,keepaspectratio=true]
-    {Feed_forward_neural_net.png}
+    \includegraphics[width=\textwidth,height=8cm,keepaspectratio=true]
+    {feed-forward-neural-network.png}
     \caption{
-        Feed forward neural network with 4 neurons each in every layer \cite{WikipediaEN_FeedForward_Network}.
+        A Feed forward neural network.
     }
     \label{fig:Feed forward neural network}
 \end{figure}
 
-There are 3 layers in the figure and the extracted features of raw data will be sent through the input layer. Each circle is a neuron with incoming lines (do not confuse with the arrows) as inputs and outgoing lines as outputs to the next layer. Each line carries a weight and the input layer has no weights since it has no incoming lines. The output layer has no outgoing lines and will be used as final output. In this figure, the hidden layers have 4 neurons which will have 4 weights and 1 bias variable for each of its neurons. In the beginning, the weights and bias variable are assigned with initial values. Each neuron can have a non-linear activation function such as sigmoid, hyperbolic tangent, rectifiers etc \cite{Goldberg2016}. Different activation functions pose different advantages and rectifiers are used in common. This activation function will help the neural network models to approximate any nonlinear function. The output layer can use a transformation function such as softmax to convert values to represent a discrete probability distribution. In this figure, 4 neurons are used and so it refers to 4 labels and this system classifies the input into one of the labels.
+\begin{equation}
+\mathrm{NN_{MLP1}}(x) = y
+\end{equation}
+\begin{equation} \label{equ: feed forward hidden layer}
+h^1 = g(xW^1 + b^1)
+\end{equation}
+\begin{equation} \label{equ: feed forward output layer}
+y = h^1W^2 + b^2
+\end{equation}
+\begin{align*}
+x \in \R^{d_{in}}, W^1 \in \R^{d_{in}*d_1}, b^1 \in \R^{d_1}, W^2 \in \R^{d_1*d_2}, b^2 \in \R^{d_2}
+\end{align*}
 
-Training is an essential part of learning and like many supervised algorithms, a loss function is used to compute the error for the estimated output against the actual output. Some of the loss functions that could be used are hinge (binary and multiclass), log loss, categorical cross-entropy loss etc \cite{Goldberg2016}. The gradient of the errors is calculated and propagated back to compute with respect to weights and bias. The values of the weights and bias are adjusted with respect to the gradient and a learning parameter. Typically a random batch of inputs are selected and parameters are applied and the output is computed. The average loss is computed for that batch and the parameters are reassigned. This optimization technique is called stochastic gradient descent \cite{Bottou2012} and other techniques available are Nesterov Momentum \cite{Sutskever2013}, AdaGrad \cite{Duchi2011} etc. The overfitting in neural networks can be minimized by using regularization techniques such as L\textsubscript{2} regularization and dropout \cite{Hinton2012}. The L\textsubscript{2} regularization works by adding a squared penalty on parameters with respect to the function being minimized. The dropout works by randomly ignoring half of the neurons in networks or in every specific layer in each batch and corrects the error only using the parameters of another half of neurons. This helps to prevent the network from relying on only specific weights. 
+Here W\textsuperscript{1} and b\textsuperscript{1} are a matrix and a bias term for the first linear transformation of input, g is a non-linear function that is applied element-wise, and W\textsuperscript{2} and b\textsuperscript{2} are matrix and bias term for second linear transform. With respect to the figure \ref{fig:Feed forward neural network}, the values of d\textsubscript{in}, d\textsubscript{1} and d\textsubscript{2} are 3, 4 and 2 respectively. 
 
-Feedforward networks work very well on structured input data and in case of text data, the input is arbitrary. Techniques such as the continuous bag of words \cite{DBLP:journals/corr/abs-1301-3781} can be used to convert the arbitrary input into fixed length but it will lose the order of the text information which is important. Convolutional neural network (CNN) \cite{Bengio1997} are good at capturing the local characteristics of data irrespective of its position. In this, a nonlinear function is applied to every k-word sliding window and captures the important characteristics of the word in that window. All the important characteristics from each window are combined by either taking maximum or average value from each window. This captures the important characteristics of a sentence irrespective of their location. But yet the support for order is restricted only to local patterns and fails to recognize orders that are far apart in the sequence.
+There are 3 layers in the figure \ref{fig:Feed forward neural network}. Each circle is a neuron with incoming lines as inputs and outgoing lines as outputs to the next layer. Each line carries a weight and the input layer has no weights since it has no incoming lines. The input layer consists of 3 neurons and the extracted features of raw data will be sent through these neurons. The hidden layer consists of 4 neurons, where as each neuron takes 3 inputs from input layer. Each input is multiplied with a unique weight variable and added together. Finally, the output is added with 1 bias variable and will be passed to a non-linear activation function as shown in equation \ref{equ: feed forward hidden layer}. The activation function help the neural network models to approximate any nonlinear function. Different activation functions pose different advantages. Some activation functions that will be used in this thesis are sigmoid, hyperbolic tangent and rectifiers \cite{Goldberg2016}. Rectifiers are used most commonly.
 
-Recurrent neural networks (RNN) accept arbitrary input size, pays attention to the structure and consider the long dependencies \cite{Elman}. RNN takes input as an ordered list of input vectors such as x\textsubscript{i:j} with initial state vector h\textsubscript{0} and returns an ordered list of state vectors h\textsubscript{1},...,h\textsubscript{n} as well as an ordered list of output vectors o\textsubscript{1},...,o\textsubscript{n}. At time step t, RNN takes input a state vector h\textsubscript{t-1}, an input vector x\textsubscript{t} and outputs a new state vector h\textsubscript{t} as shown in the figure. The outputted state vector is used as input state vector at the next time step. The same weights for input, state, and output vectors are used in each and every time step.   
+The sigmoid activation function is a S-shaped function which transforms any value between the range 0 and 1. This is considered to be depreceated since other functions have been giving better results empirically. 
 
-%\begin{equation}
-%RNN(h\textsc{0},x\textsc{1:n}) = h\textsc{1:n}, o\textsc{1:n}
-%h\textsc{i} = R(h\textsc{i-1}, x\textsc{i})
-%o\textsc{i} = 
-%\end{equation}
+\begin{align*}
+\sigma (x) = \frac{1}{1 + e^{-x}}
+\end{align*} 
+
+The hyperbolic tangent function is also a S-shaped function, but it transforms any value between the range -1 and 1.
+
+\begin{align*}
+tanh(x) = \frac{e^{2x}-1}{e^{2x}+1}
+\end{align*}
+
+The Rectifier activation function clips values lesser than 0 and it performs faster and better than sigmoid and hybolic tangent functions.
+
+\begin{align*}
+ReLU(x) = max(0,x)
+\end{align*}
+
+The output layer consists 2 neurons and each will take 3 inputs from hidden layer as shown in equation \ref{equ: feed forward output layer}. If it has no outgoing lines then it will be used as final output. The output layer can use a transformation function such as softmax to convert values to represent a discrete probability distribution. In this figure, 2 neurons are used to refer to 2 labels and this system classifies the input into one of those labels. 
+
+\begin{align*}
+y = y_1,y_2...,y_k \\
+s_i = softmax(y_i) = \frac{e^{y_i}}{(\sum_{j=1}^ke^{y_j})}
+\end{align*}
+
+Training is an essential part of learning and like many supervised algorithms, a loss function is used to compute the error for the predicted output against the actual output. Some of the loss functions that could be used are hinge loss (binary and multiclass), log loss, categorical cross-entropy loss etc \cite{Goldberg2016}. 
+
+\begin{align*}
+L_{hinge(binary)}(\hat{y},y) = max(0,1-y.\hat{y})
+\end{align*}
+
+\begin{align*}
+L_{cross-entropy}(\hat{y},y) = -\sum_iy_i.log(\hat{y_i}) \\
+L_{cross-entropy(hard classification)}(\hat{y},y) = -log(\hat{y_t})
+\end{align*}
+
+The gradient of the errors is calculated and propagated back to compute with respect to weights and bias. The values of the weights and bias are adjusted with respect to the gradient and a learning parameter. Typically a random batch of inputs is selected and a forward pass is carried out which involves multiplying weights, adding bias and applying a activation function on top of it to predict outputs. The average loss is computed for that batch and the parameters are adjusted accordingly. This optimization technique is called stochastic gradient descent \cite{Bottou2012}. A number of extensions exists, such as Nesterov Momentum \cite{Sutskever2013} or AdaGrad \cite{Duchi2011}. The overfitting in neural networks can be minimized by using regularization techniques such as L\textsubscript{2} regularization and dropout \cite{Hinton2012}. The L\textsubscript{2} regularization works by adding a penalty term equal to sum of the squares of all the parameters in the network to the loss function which is being minimized. The dropout works by randomly ignoring half of the neurons in every layer in each batch and corrects the error only using the parameters of other half of neurons. This helps to prevent the network from relying on only specific weights. 
+
+Feedforward networks work very well on structured input data but, in case of text data, the input is sequential. Techniques such as continuous bag of words \cite{DBLP:journals/corr/abs-1301-3781} can be used to convert sequential input into fixed length but it will lose the order of the text information which is important. Convolutional neural networks (CNN) \cite{Bengio1997} are good at capturing the local characteristics of data irrespective of its position. In this, a nonlinear function is applied to every k-word sliding window and captures the important characteristics of the word in that window. All the important characteristics from each window are combined by either taking maximum or average value from each window. This captures the important characteristics of a sentence irrespective of its location. However, because of the nature of CNNs they fail to recognize patterns that are far apart in the sequence.
+
+Recurrent neural networks (RNN) accept sequential inputs and are often able to extract patterns over long distances \cite{Elman}. RNN takes input as an ordered list of input vectors such as x\textsubscript{i:j} with initial state vector h\textsubscript{0} and returns an ordered list of state vectors h\textsubscript{1},...,h\textsubscript{n} as well as an ordered list of output vectors o\textsubscript{1},...,o\textsubscript{n}. At time step t, a RNN takes as input a state vector h\textsubscript{t-1}, an input vector x\textsubscript{t} and outputs a new state vector h\textsubscript{t} as shown in the figure \ref{fig:A basic RNN architecture}. The outputted state vector is used as input state vector at the next time step. The same weights for input, state, and output vectors are used in each time step.  
 
 %RNN - architecture, how does it support the sequence, (Elman, 1990) 
 %Back Propagation through time (BPTT) - (Werbos, 1990) \cite{Werbos1990}
@@ -195,10 +244,40 @@ Recurrent neural networks (RNN) accept arbitrary input size, pays attention to t
     \label{fig:A basic RNN architecture}
 \end{figure}
 
-To train RNN, the network is unrolled for the given input sequence and the loss function uses these nodes to compute the error and propagate backward depending on the application \cite{Werbos1990}. While training, the error gradients might vanish or explode especially when dealing with RNNs. The gradient explosion can be handled by clipping the gradient when it goes beyond the threshold. LSTM networks \cite{Hochreiter1997} solves vanishing gradient problem by introducing memory cells which remembers gradients across time steps. These memory cells are controlled by mathematical functions which simulate logical gates called gating components. At each time step, a decision is made by gating components on how much of the current content of memory cell and new input should be retained. 
+\begin{align*}
+\mathrm{RNN}(s_0,x_{1:n}) = s_{1:n}, y_{1:n} \\
+s_i = R(s_{i-1},x_i) \\
+y_i = O(s_i) \\
+x_i \in \R^{d_{in}}, y_i \in \R^{d_{out}}, s_i \in \R^{f(d_{out})} 
+\end{align*}
 
+To train a RNN, the network is unrolled for the given input sequence and the loss function is used to compute the gradient of error with respect to parameters involved in every time step by propagating backwards through time. After that the parameters are adjusted to reduce the error in estimation\cite{Werbos1990}. While training, the error gradients might vanish or explode especially when dealing with RNNs. The gradient explosion can be handled by clipping the gradient when it goes beyond the threshold. LSTM networks \cite{Hochreiter1997} solves the vanishing gradient problem by introducing memory cells which remembers gradients across time steps. These memory cells are controlled by gating components which decides at every time step, on what parts of the hidden state should be carried over and what parts of new input should be included. 
 
-\section{Approach}
+\begin{align*}
+s_j = R_{LSTM}(s_{j-1},x_j) = [c_j;h_j] \\
+c_j = c_{j-1} \odot f + g \odot i \\
+h_j = tanh(c_j) \odot o \\
+i = \sigma(x_jW^{xi} + h_{j-1} W^{hi}) \\
+f = \sigma(x_jW^{xf} + h_{j-1} W^{hf}) \\
+o = \sigma(x_jW^{xo} + h_{j-1} W^{ho}) \\
+g = \sigma(x_jW^{xg} + h_{j-1} W^{hg}) \\
+\\
+y_j = O_{LSTM}(s_j) = h_j \\
+\\
+s_j \in \R^{2.d_h},   x_i \in \R^{d_x},  c_j,h_j,i,f,o,g \in \R^d_h,  W^{xo} \in \R^{d_x*d_h},  W^{ho} \in \R^{d_h*d_h}
+\end{align*}
+
+\section{Approach} 
+
+You should rewrite this complete section. Start with the general architecture diagram, that we talked about in the last meeting (i.e. a black box taking a sentence and a context as input and outputting a binary output). Then discuss the different  context definitions that we plan to compare. In the following roughly scetch out the planned architecutre of the model (i.e. RNN for encoding the input sentence, RNN for encoding the context sentence(s) (when applicable) and attention mechanism to reduce to singular vector followed by feed-forward net for prediction). At the end discuss training, i.e. how negative example sentences are generated from positive ones, and that you will need to compare several hyperparameter configurations.
+
+\begin{enumerate}
+
+\item General Architecutre diagram - sentence and context giving a binary output
+\item How different models of context are available - None, 10 relevant wikipedia sentences, 100 triples of knowlege graph, knowledge graph as it is, POS + Named Entity + dependency graph
+\item Get into the details of how the sentence and context are going to be modeled, attention mechanism to reduce to a sngular vector followed by feed forward network for prediction
+\item Talk about training - how negative sentences are generated from the positive ones and also compare several hyper parameter configurations
+\end{enumerate}
 
 We will use  Recurrent neural networks in the master thesis extensively since they are good with sequential data. TensorFlow\footnote{https://www.tensorflow.org/}, a python library for building intensive numerical computation applications and deploy it in multiple platforms such as CPU, GPU etc, will be used to develop RNN architecture. Wikipedia consists of a lot of articles; each article consists of a lot of sentences. Each sentence could be fed as input to the neural network. The different configurations of the neural network will be used and the performance of each will be compared against the other. Some of the configurations of the neural network are
 
