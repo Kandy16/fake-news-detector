@@ -99,6 +99,12 @@ Xiaomo Liu, Armineh Nourbakhsh, Quanzhi Li, Rui Fang, and Sameena Shah.
 \newblock In {\em Proceedings of the 24th ACM International on Conference on
   Information and Knowledge Management - CIKM '15}, 2015.
 
+\bibitem[MCCD]{Mikolov2013}
+Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean.
+\newblock {Distributed Representations of Words and Phrases and their
+  Compositionality arXiv : 1310 . 4546v1 [ cs . CL ] 16 Oct 2013}.
+\newblock pages 1--9.
+
 \bibitem[MCCD13]{DBLP:journals/corr/abs-1301-3781}
 Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean.
 \newblock Efficient estimation of word representations in vector space.
@@ -115,11 +121,6 @@ Jing Ma, Wei Gao, Zhongyu Wei, Yueming Lu, and Kam-Fai Wong.
   Microblogging Websites}.
 \newblock In {\em Proceedings of the 24th ACM International on Conference on
   Information and Knowledge Management - CIKM '15}, 2015.
-
-\bibitem[MP43]{McCulloch1943}
-Warren~S. McCulloch and Walter Pitts.
-\newblock {A logical calculus of the ideas immanent in nervous activity}.
-\newblock {\em The Bulletin of Mathematical Biophysics}, 1943.
 
 \bibitem[PCL{\etalchar{+}}07]{Priedhorsky2007}
 Reid Priedhorsky, Jilin Chen, Shyong (Tony)~K. Lam, Katherine Panciera, Loren
